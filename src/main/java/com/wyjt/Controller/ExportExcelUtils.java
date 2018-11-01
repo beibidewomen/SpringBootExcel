@@ -1,4 +1,4 @@
-package com.xiaopotian.Controller;
+package com.wyjt.Controller;
 
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
@@ -16,9 +16,7 @@ import org.apache.poi.xssf.usermodel.extensions.XSSFCellBorder.BorderSide;
 import java.awt.Color;
 import java.net.URLEncoder;
 
-/**
- * Created by zouLu on 2017-12-14.
- */
+
 public class ExportExcelUtils {
     public static void exportExcel(HttpServletResponse response, String fileName, ExcelData data) throws Exception {
         // 告诉浏览器用什么软件可以打开此文件

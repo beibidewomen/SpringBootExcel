@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/person
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+  mvc:
+    view:
+      suffix: .html
+      prefix: /pages/
+mybatis:
+  type-aliases-package: com.wyjt.entity
+  mapper-locations: classpath:mapper/*.xml      

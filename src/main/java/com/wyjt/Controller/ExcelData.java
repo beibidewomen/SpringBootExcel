@@ -1,11 +1,8 @@
-package com.xiaopotian.Controller;
+package com.wyjt.Controller;
 
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by zouLu on 2017-12-14.
- */
 
 public class ExcelData implements Serializable {
 
