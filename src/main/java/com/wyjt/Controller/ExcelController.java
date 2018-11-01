@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.wyjt.entity.InfoResultMap;
 import com.wyjt.enums.DataEnum;
 import com.wyjt.service.GetInfoService;
@@ -68,8 +72,28 @@ public class ExcelController {
         ExportExcelUtils.exportExcel(data, out);
         out.close();*/
         ExportExcelUtils.exportExcel(response,"hello.xlsx",data);
-        
-        
-        
+    }
+    
+    @RequestMapping(value="/data1.json",method=RequestMethod.GET)
+    public String getJSonData(String startTime,String endTime) {
+    	System.out.println("startTime:"+startTime);
+    	System.out.println("endTime:"+endTime);
+    	
+    	Map<String,String> dataMap = new HashMap<String,String>();
+    	dataMap.put("startTime", startTime);//开始时间
+    	dataMap.put("endTime", endTime);    //结束时间
+		List<InfoResultMap> info = getInfoService.getInfo(dataMap);
+		
+		JSONArray arr = new JSONArray();
+		for (Object inf : info) {
+			Map<String,Object> map = new HashMap<String,Object>();
+        	InfoResultMap rsMap = (InfoResultMap)inf;
+        	map.put("id",rsMap.getId());
+        	map.put("username",rsMap.getUsername());
+        	map.put("age",rsMap.getAge());
+        	map.put("password",rsMap.getPassword());
+        	arr.add(map);
+		}
+    	return JSON.toJSONString(arr);
     }
 }

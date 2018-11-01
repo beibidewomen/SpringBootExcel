@@ -1,14 +1,25 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="../js/bootstrap-table.min.js">
+<script src="../js/jquery-3.3.1.min.js"></script>
+
+
+<script src="../js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="../css/bootstrap-table.css">
+
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/bootstrap-table-zh-CN.js"></script>
+
+<script src="pages/index.js"></script>
+
 <body>
-	<form action="/excel">
-		开始时间：<input type="text" name="startTime">
-		结束时间：<input type="text" name="endTime">
-		<input type="submit" value="查询">
+	<form action="/excel" method="get">
+		<input type="submit" value="导出成excel">
 	</form>
+	<table id="table"></table>
 </body>
 </html>
